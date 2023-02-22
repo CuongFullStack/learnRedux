@@ -29,7 +29,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 export default createSlice({
-  name: "filter",
+  name: "filters",
   initialState: {
     search: "",
     status: "All",
@@ -43,7 +43,7 @@ export default createSlice({
     statusFilterChange: (state, action) => {
       state.status = action.payload;
     },
-    prioritiesFilterChange: (state, action) => {
+    priorityFilterChange: (state, action) => {
       state.priority = action.payload;
     },
   },

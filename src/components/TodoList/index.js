@@ -4,25 +4,44 @@ import Todo from "../Todo";
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import { todosRemainingSelector } from "../../redux/selectors";
-import todoListSlice from "./todosSlice";
+import { addNewTodo } from "./todosSlice";
+// import { addTodo } from "./todosSlice";
 
 export default function TodoList() {
   const [todoName, setTodoName] = useState("");
   const [prioriry, setPriority] = useState("Medium");
 
   const todoList = useSelector(todosRemainingSelector); //Lấy dữ liệu từ kho chung
-  // const searchText = useSelector(searchTextSelector);
   const dispatch = useDispatch();
 
   const handleAddButtonClick = () => {
+    // dispatch(
+    //   todoListSlice.actions.addTodo({
+    //     id: uuidv4(),
+    //     name: todoName,
+    //     completed: false,
+    //     priority: prioriry,
+    //   })
+    // );
+
+    // dispatch(
+    //   addTodo({
+    //     id: uuidv4(),
+    //     name: todoName,
+    //     completed: false,
+    //     priority: prioriry,
+    //   })
+    // );
+
     dispatch(
-      todoListSlice.actions.addTodo({
+      addNewTodo({
         id: uuidv4(),
         name: todoName,
         completed: false,
         priority: prioriry,
       })
     );
+
     setTodoName("");
     setPriority("medium");
   };

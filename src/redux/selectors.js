@@ -20,7 +20,7 @@
 // );
 
 import { createSelector } from "@reduxjs/toolkit"; //Dùng để viết selector phụ thuocj cá selector khác
-export const todoListSelector = (state) => state.todoList;
+export const todoListSelector = (state) => state.todoList.todos;
 export const searchTextSelector = (state) => state.filters.search;
 export const filterStatusSelector = (state) => state.filters.status;
 export const priorityFilterSelector = (state) => state.filters.priority;
@@ -31,13 +31,12 @@ export const todosRemainingSelector = createSelector(
   filterStatusSelector,
   priorityFilterSelector,
   (todoList, searchText, status, priority) => {
-    return todoList.filter((todo) => {
-      return (
-        (todo.name.includes(searchText) &&
-          (priority.length ? priority.includes(todo.priority) : true) &&
-          status === "All") ||
-        (status === "Completed" ? todo.completed : !todo.completed)
-      );
-    });
+    return todoList.filter(
+      (todo) =>
+        todo.name.includes(searchText) &&
+        (priority.length ? priority.includes(todo.priority) : true) &&
+        (status === "All" ||
+          (status === "Completed" ? todo.completed : !todo.completed))
+    );
   }
 );
