@@ -49,9 +49,6 @@
 // export default rootReducer;
 
 //Viết gọn code khi cắt nhỏ reducer
-import filtersReducer from "../components/Filters/FiltersSlice";
-import todosListReducer from "../components/TodoList/todosSlice";
-import { combineReducers } from "redux"; //Dùng combineReducers để code gọn hơn
 
 // const rootReducer = (state = {}, action) => {
 //   //Nhớ khởi tạo state
@@ -60,6 +57,10 @@ import { combineReducers } from "redux"; //Dùng combineReducers để code gọ
 //     todoList: todosListReducer(state.todoList, action),
 //   };
 // };
+
+import filtersReducer from "../components/Filters/FiltersSlice";
+import todosListReducer from "../components/TodoList/todosSlice";
+import { combineReducers } from "redux"; //Dùng combineReducers để code gọn hơn
 
 const rootReducer = combineReducers({
   filters: filtersReducer,
